@@ -35,7 +35,7 @@
                 Declaracoes.iImprimirTexto_DUAL_DarumaFramework("<bmp></bmp>", 0);
                 Declaracoes.iImprimirTexto_DUAL_DarumaFramework("<ce><e><b><da>" + Nome + "<l></l></da></b>" +
                                                                 "<fe>" + email +
-                                                                "<sl>1</sl></e></fe> Este é o seu comprovante!!!" +
+                                                                "</e></fe>" +
                                                                 "<l></l>Impresso na DR700 DARUMA" +
                                                                 "<l></l> www.desenvolvedoresdaruma.com.br</ce>", 0);
 
