@@ -3,7 +3,7 @@
     class Cupom
     {
 
-        public void fichaDeAvaliacao()
+        public void FichaDeAvaliacao()
         {
             Declaracoes.iImprimirTexto_DUAL_DarumaFramework("<bmp></bmp>", 0);
             Declaracoes.iImprimirTexto_DUAL_DarumaFramework("<confgui>P</confgui>", 0);
@@ -27,13 +27,13 @@
             }
         }
 
-        public void Imprimir(string Nome, string email)
+        public void Imprimir(string nome, string email)
         {
             {
 
                 //MessageBox.Show("Impressora Ligada!");
                 Declaracoes.iImprimirTexto_DUAL_DarumaFramework("<bmp></bmp>", 0);
-                Declaracoes.iImprimirTexto_DUAL_DarumaFramework("<ce><e><b><da>" + Nome + "<l></l></da></b>" +
+                Declaracoes.iImprimirTexto_DUAL_DarumaFramework("<ce><e><b><da>" + nome + "<l></l></da></b>" +
                                                                 "<fe>" + email +
                                                                 "</e></fe>" +
                                                                 "<l></l>Impresso na DR700 DARUMA" +
@@ -48,7 +48,7 @@
                 Declaracoes.iImprimirTexto_DUAL_DarumaFramework("<gui></gui>", 0);
 
                 Declaracoes.iImprimirTexto_DUAL_DarumaFramework("<ce><e><b><da> SIOS <sl>2</sl></da>" +
-                                                                Nome + "<l></l></b>" +
+                                                                nome + "<l></l></b>" +
                                                                 "<fe>" + email + "</fe></e>" +
                                                                 "<sl>1</sl> Deposite este ticket na urna SIOS!" +
                                                                 "<sl>1</sl><b>Impresso na DR700 DARUMA" +
@@ -58,7 +58,7 @@
 
                 //NGR Solutions
                 Declaracoes.iImprimirTexto_DUAL_DarumaFramework("<ce><e><b><da> NGR Solutions </b></da>" +
-                                                                "<sl>2</sl><b>" + Nome + "<l></l>" +
+                                                                "<sl>2</sl><b>" + nome + "<l></l>" +
                                                                 "<fe>" + email + "</b></e></fe>" +
                                                                 "<sl>1</sl> Deposite este ticket na urna NGR Solutions!" +
                                                                 "<sl>1</sl><b>Impresso na DR700 DARUMA" +
@@ -68,7 +68,7 @@
 
                 //Idera
                 Declaracoes.iImprimirTexto_DUAL_DarumaFramework("<ce><e><b><da> Idera </b></da>" +
-                                                                "<sl>2</sl><b>" + Nome + "<l></l>" +
+                                                                "<sl>2</sl><b>" + nome + "<l></l>" +
                                                                 "<fe>" + email + "</b></e></fe>" +
                                                                 "<sl>1</sl> Deposite este ticket na urna Idera!" +
                                                                 "<sl>1</sl><b>Impresso na DR700 DARUMA" +
@@ -78,7 +78,7 @@
 
                 //Mainworks Confio
                 Declaracoes.iImprimirTexto_DUAL_DarumaFramework("<ce><e><b><da> Mainworks Confio </b></da>" +
-                                                                "<sl>2</sl><b>" + Nome + "<l></l>" +
+                                                                "<sl>2</sl><b>" + nome + "<l></l>" +
                                                                 "<fe>" + email + "</b></e></fe>" +
                                                                 "<sl>1</sl> Deposite este ticket na urna Mainworks Confio!" +
                                                                 "<sl>1</sl><b>Impresso na DR700 DARUMA" +
