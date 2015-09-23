@@ -43,6 +43,7 @@
             this.txtEspera = new System.Windows.Forms.Label();
             this.txtAlunos = new System.Windows.Forms.Label();
             this.txtInscritos = new System.Windows.Forms.Label();
+            this.lblFood = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -183,12 +184,26 @@
             this.txtInscritos.Size = new System.Drawing.Size(0, 13);
             this.txtInscritos.TabIndex = 10;
             // 
+            // lblFood
+            // 
+            this.lblFood.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblFood.AutoSize = true;
+            this.lblFood.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFood.Location = new System.Drawing.Point(179, 395);
+            this.lblFood.Name = "lblFood";
+            this.lblFood.Size = new System.Drawing.Size(70, 26);
+            this.lblFood.TabIndex = 14;
+            this.lblFood.Text = "Nome:";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1024, 768);
+            this.Controls.Add(this.lblFood);
             this.Controls.Add(this.txtTotal);
             this.Controls.Add(this.txtEspera);
             this.Controls.Add(this.txtAlunos);
@@ -230,6 +245,7 @@
         private System.Windows.Forms.Label txtEspera;
         private System.Windows.Forms.Label txtAlunos;
         private System.Windows.Forms.Label txtInscritos;
+        private System.Windows.Forms.Label lblFood;
     }
 }
 

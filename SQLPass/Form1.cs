@@ -20,6 +20,7 @@ namespace SQLPass
         public Form1()
         {
             InitializeComponent();
+            lblFood.Text = "";
 
             int retorno = Declaracoes.eBuscarPortaVelocidade_DUAL_DarumaFramework();
             if (retorno != 1)
@@ -43,6 +44,8 @@ namespace SQLPass
                 if (participante != null)
                 {
                     txtNome.Text = participante.Nome;
+                    lblFood.Text = participante.Comida;
+
                     if (participante.Impresso)
                     {
                         MessageBox.Show("Credenciamento já realizado");
@@ -56,6 +59,7 @@ namespace SQLPass
                 else
                 {
                     txtNome.Text = string.Empty;
+                    lblFood.Text = string.Empty;
                     btnImprimir.Enabled = false;
 
                     var participanteUnip = _unipRepository.Buscar(txtEmail.Text);
@@ -69,6 +73,7 @@ namespace SQLPass
                         else
                         {
                             txtNome.Text = participanteUnip.Nome;
+                            lblFood.Text = participanteUnip.Comida;
                             btnImprimir.Enabled = true;
                             btnImprimir.Focus();
                         }
@@ -83,6 +88,8 @@ namespace SQLPass
                         if (participanteEspera != null)
                         {
                             txtNome.Text = participanteEspera.Nome;
+                            lblFood.Text = participanteEspera.Comida;
+
                             if (IsHorario())
                             {
                                 if (participanteEspera.Impresso)
@@ -103,6 +110,7 @@ namespace SQLPass
                         else
                         {
                             txtNome.Text = string.Empty;
+                            lblFood.Text = string.Empty;
                             btnImprimir.Enabled = false;
                         }
                     }
@@ -122,7 +130,7 @@ namespace SQLPass
             btnImprimir.Enabled = false;
 
             var cupom = new Cupom();
-            cupom.Imprimir(txtNome.Text, txtEmail.Text);
+            cupom.Imprimir(txtNome.Text, txtEmail.Text, lblFood.Text);
 
             _logRepository.MarcarRegistro(txtEmail.Text);
 
@@ -133,6 +141,7 @@ namespace SQLPass
 
             txtEmail.Text = string.Empty;
             txtNome.Text = string.Empty;
+            lblFood.Text = string.Empty;
             this.AtualizarContadores();
         }
 
@@ -183,7 +192,7 @@ namespace SQLPass
         public ParticipanteRepository(string arquivo)
         {
             this._arquivo = arquivo;
-            var file = "C://temp/PARTICIPANTE.csv";
+            var file = "C://temp/Registration.csv";
             if (arquivo == "UNIP")
                 file = "C://temp/UNIP.csv";
             else if (arquivo == "ESPERA")
@@ -193,7 +202,7 @@ namespace SQLPass
             AtualizaRegistro();
         }
 
-      
+
 
         private List<Participante> LoadFile(string file)
         {
@@ -202,9 +211,18 @@ namespace SQLPass
             using (var streamReader = new StreamReader(file))
             {
                 var readLine = streamReader.ReadLine();
+                int sobrenomeIndex = 0;
+                int emailIndex = 0;
+                int nomeIndex = 0;
+                int comidaIndex = 0;
                 if (readLine != null)
                 {
-                    var header = readLine.Split(';');
+                    var header = readLine.Split(';').ToArray();
+                    sobrenomeIndex = Array.IndexOf(header, "Last Name");
+                    nomeIndex= Array.IndexOf(header, "First Name");
+                    emailIndex=Array.IndexOf(header, "Email");
+                    comidaIndex = Array.IndexOf(header, "Payment Amount Received");
+
                 }
                 while (streamReader.Peek() >= 0)
                 {
@@ -212,10 +230,23 @@ namespace SQLPass
                     if (line != null)
                     {
                         var itens = line.Split(';');
-                        var sobrenome = itens[0];
-                        var nome = itens[1];
-                        var email = itens[2];
-                        retorno.Add(new Participante() { Email = email, Nome = UppercaseWords(nome + " " + sobrenome) });
+                        var sobrenome = itens[sobrenomeIndex];
+                        var nome = itens[nomeIndex];
+                        var email = itens[emailIndex];
+                        var comida = "";
+                        if (comidaIndex>=0)
+                        {
+                            if (itens[comidaIndex] != "0")
+                            {
+                                comida = "LunchBox";
+                            }
+                            else
+                            {
+                                comida = "";
+                            }
+                        }
+
+                        retorno.Add(new Participante() { Email = email, Nome = UppercaseWords(nome + " " + sobrenome), Comida = comida });
                     }
                 }
             }
@@ -259,7 +290,7 @@ namespace SQLPass
             var participante = this.Participantes.FirstOrDefault(a => a.Email.ToLower() == email.ToLower());
             if (participante != null)
             {
-                using (var file = new System.IO.StreamWriter(string.Format("c:\\Temp\\Log_{0}.csv",this._arquivo), true))
+                using (var file = new System.IO.StreamWriter(string.Format("c:\\Temp\\Log_{0}.csv", this._arquivo), true))
                 {
                     file.WriteLine(email);
                     file.Close();
@@ -301,5 +332,6 @@ namespace SQLPass
         public string Email { get; set; }
         public string Nome { get; set; }
         public bool Impresso { get; set; }
+        public string Comida { get; set; }
     }
 }
