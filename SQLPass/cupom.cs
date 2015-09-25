@@ -43,7 +43,6 @@ namespace SQLPass
 
 
                 //PULANDO LINHA PARA LOGO
-                Declaracoes.iImprimirTexto_DUAL_DarumaFramework("<sl>1</sl>", 0);
 
                 if (food != "" && food != "0")
                 {
@@ -59,8 +58,9 @@ namespace SQLPass
 
 
                     //PULANDO LINHA PARA LOGO
-                    Declaracoes.iImprimirTexto_DUAL_DarumaFramework("<sl>1</sl>", 0);
+               //     Declaracoes.iImprimirTexto_DUAL_DarumaFramework("<sl>1</sl>", 0);
                 }
+                Declaracoes.iImprimirTexto_DUAL_DarumaFramework("<sl>1</sl>", 0);
                 Declaracoes.iImprimirTexto_DUAL_DarumaFramework("<confgui>T</confgui>", 0);
                 Declaracoes.iImprimirTexto_DUAL_DarumaFramework("<gui></gui>", 0);
 
